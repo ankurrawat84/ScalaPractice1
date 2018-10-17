@@ -1,6 +1,8 @@
+package practice
+
 class Balance extends Account() {
 
-  var bal = 100;
+  var bal = 100
  // super.getDetails("ankur1","12345")
 
 

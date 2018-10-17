@@ -1,6 +1,10 @@
+package practice
+
 trait Calculator {
 
-  def add(x: Integer, y: Integer) : Integer
+  def add(x: Integer, y: Integer) : Integer={
+  x+y+1
+  }
 
   def subs(x: Integer, y: Integer) : Integer
 

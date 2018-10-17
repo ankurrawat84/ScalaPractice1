@@ -1,5 +1,0 @@
-class Cal extends Calc{
-
-
-
-}

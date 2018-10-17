@@ -1,8 +1,11 @@
+package practice
+
+
 abstract class Calc extends Calculator {
 
   override def add(x: Integer, y: Integer): Integer = {
     x + y
-  };
+  }
 
  override def subs(x: Integer, y: Integer): Integer = {
    x-y
