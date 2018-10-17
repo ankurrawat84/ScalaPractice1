@@ -1,4 +1,4 @@
-package practice
+package Inheritance
 
 trait Calculator {
 

@@ -1,4 +1,4 @@
-package practice
+package Inheritance
 
 
 class Cal extends Calc with Calculator {

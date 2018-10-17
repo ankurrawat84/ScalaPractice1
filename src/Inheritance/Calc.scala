@@ -1,4 +1,4 @@
-package practice
+package Inheritance
 
 
 abstract class Calc extends Calculator {
