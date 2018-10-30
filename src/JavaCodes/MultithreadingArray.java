@@ -1,14 +1,14 @@
 package JavaCodes;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+
+
 
 public class MultithreadingArray implements Runnable {
 
     Thread t;
     String threadName;
-    List<Integer> a = new ArrayList<>();
+    static ArrayList<Integer> a = new ArrayList<>();
 
 
     MultithreadingArray(String threadName) {
@@ -19,11 +19,21 @@ public class MultithreadingArray implements Runnable {
     public void run() {
         System.out.println("Running thread name: " + threadName);
 
-        synchronized (a) {
-            for (Integer i = 0; i <= 4; i++) {
+        synchronized (a)
+        {
+
+            for (Integer i = 0; i <= 20; i++) {
                 System.out.println("Thread " + threadName + " " + i);
-                if (!a.contains(i) || a.isEmpty()) {
-                    a.add(i);
+                if (!a.contains(i)) {
+//                    a.add(i);
+                    try {
+                        if (threadName == "Thread1") {Thread.sleep(10);a.add(i);}
+                        else
+                        {Thread.sleep(10);a.add(i);}
+                        } catch (Exception e){
+                        System.out.println(e.toString());
+                    }
+
                 }
             }
         }
@@ -40,18 +50,26 @@ public class MultithreadingArray implements Runnable {
 
     public static void main(String args[]) {
 
+
+
         MultithreadingArray obj1 = new MultithreadingArray("Thread1");
         obj1.start();
 
-       // MultithreadingArray obj2 = new MultithreadingArray("Thread2");
-        //obj2.start();
+        MultithreadingArray obj2 = new MultithreadingArray("Thread2");
+       obj2.start();
 
-        System.out.println("Starting Print operation");
-        for (Integer i :obj1.a ){
-            System.out.println(i);
+       try {
+           obj2.t.join();
+           obj1.t.join();
+
+           System.out.println("\nStarting Print operation");
+           for (Integer i : a ){
+               System.out.println(i);
+           }
+       } catch (Exception e){
+           System.out.println(e.toString());
         }
     }
-
 }
 
 
